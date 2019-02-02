@@ -43,17 +43,7 @@ GROUP BY last_name
 ORDER BY last_name ASC;
 
 -- 4b. List last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors
-CREATE VIEW actor_count as
-SELECT last_name, 
-COUNT(last_name) as 'count'
-FROM actor
-GROUP BY last_name
-ORDER BY last_name ASC;
-
-SELECT * FROM actor_count
-WHERE COUNT >=2;
--- -----------------------------
-SELECT *, 
+SELECT * 
 FROM
 (
 SELECT last_name,
@@ -63,6 +53,7 @@ FROM actor
 GROUP BY last_name
 ORDER BY last_name ASC
 )
+AS a
 WHERE total >= 2;
 
 -- 4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS. Write a query to fix the record.
